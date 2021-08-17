@@ -28,8 +28,6 @@ $tags = $decoded['orders'][0]['tags'];
 
 curl_close($curl);
 
-
-
 echo $time;
 echo $orderId;
 echo "<br>";
@@ -42,12 +40,10 @@ if ($err) {
 
 
 
-
-
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://9d818fbe82d6ab7751f028ff2966ab20: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@achteck.myshopify.com/admin/api/2021-07/orders/".$orderId.".json",
+    CURLOPT_URL => "https://9d818fbe82d6ab7751f028ff2966ab20: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@achteck.myshopify.com/admin/api/2021-07/orders/".$orderId.".json",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
