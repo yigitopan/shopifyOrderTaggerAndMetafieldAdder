@@ -3,7 +3,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://2216e23dfab38a3557765a9782a4c272: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@achteck.myshopify.com/admin/api/2021-07/orders.json",
+    CURLOPT_URL => "https://e095dfaa95e8af3c6622dafa53e1a1f2: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@achteck.myshopify.com/admin/api/2021-07/orders.json",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -43,7 +43,7 @@ if ($err) {
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://9d818fbe82d6ab7751f028ff2966ab20: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@achteck.myshopify.com/admin/api/2021-07/orders/".$orderId.".json",
+    CURLOPT_URL => "https://e095dfaa95e8af3c6622dafa53e1a1f2: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@achteck.myshopify.com/admin/api/2021-07/orders/".$orderId.".json",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
