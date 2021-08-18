@@ -1,5 +1,5 @@
 <?php
-/*
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -97,35 +97,34 @@ if ($err) {
 } else {
     echo $response;
 }
-*/
 
-$orderMetaJson = array(
-    "metafield" => array(
-        "namespace" => "custom_fields",
-        "key" => "my_meta_key",
-        "value" => "my_meta_value",
-        "value_type" => "string"
-    )
-);
 
-$json = json_encode($orderMetaJson);
+$curl = curl_init();
 
-$requestUrl = 'https://9d818fbe82d6ab7751f028ff2966ab20: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@achteck.myshopify.com/admin/api/2021-07/orders/4052209467592/metafields.json';
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://9d818fbe82d6ab7751f028ff2966ab20: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@achteck.myshopify.com/admin/api/2021-07/orders/$orderId/metafields.json",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "{\r\n  \"metafield\": {\r\n    \"namespace\": \"temporal\",\r\n    \"key\": \"$time\",\r\n    \"value\": \"Afternoon\",\r\n    \"type\": \"string\"\r\n  }\r\n}",
+    CURLOPT_HTTPHEADER => array(
+        "authorization: Basic ZTA5NWRmYWE5NWU4YWYzYzY2MjJkYWZhNTNlMWExZjI6c2hwcGFfMmVhZTg1NjhmYTVhMmZiNzllNTNhNzU0ZTk0Nzk2OGU=",
+        "cache-control: no-cache",
+        "content-type: application/json",
+        "postman-token: d2120f62-6e3a-b52c-5fda-b5e4fd69f085"
+    ),
+));
 
-$ch = curl_init($requestUrl);
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Content-Type: application/json',
-        'Content-Length: ' . strlen($json))
-);
+curl_close($curl);
 
-$curlResult = curl_exec($ch);
-$err = curl_error($ch);
-curl_close($ch);
 if ($err) {
     echo "cURL Error #:" . $err;
+} else {
+    echo $response;
 }
