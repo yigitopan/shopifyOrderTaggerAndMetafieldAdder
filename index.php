@@ -1,5 +1,5 @@
 <?php
-
+/*
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -96,4 +96,36 @@ if ($err) {
     echo "cURL Error #:" . $err;
 } else {
     echo $response;
+}
+*/
+
+$orderMetaJson = array(
+    "metafield" => array(
+        "namespace" => "custom_fields",
+        "key" => "my_meta_key",
+        "value" => "my_meta_value",
+        "value_type" => "string"
+    )
+);
+
+$json = json_encode($orderMetaJson);
+
+$requestUrl = 'https://9d818fbe82d6ab7751f028ff2966ab20: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@achteck.myshopify.com/admin/api/2021-07/orders/4052209467592/metafields.json';
+
+$ch = curl_init($requestUrl);
+
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($json))
+);
+
+$curlResult = curl_exec($ch);
+$err = curl_error($ch);
+curl_close($ch);
+if ($err) {
+    echo "cURL Error #:" . $err;
 }
