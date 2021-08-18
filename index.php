@@ -109,7 +109,7 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "{\r\n  \"metafield\": {\r\n    \"namespace\": \"temporal\",\r\n    \"key\": \"$time\",\r\n    \"value\": \"Afternoon\",\r\n    \"type\": \"string\"\r\n  }\r\n}",
+    CURLOPT_POSTFIELDS => "{\r\n  \"metafield\": {\r\n    \"namespace\": \"temporal\",\r\n    \"key\": \"partOfDay\",\r\n    \"value\": \"$time\",\r\n    \"type\": \"string\"\r\n  }\r\n}",
     CURLOPT_HTTPHEADER => array(
         "authorization: Basic ZTA5NWRmYWE5NWU4YWYzYzY2MjJkYWZhNTNlMWExZjI6c2hwcGFfMmVhZTg1NjhmYTVhMmZiNzllNTNhNzU0ZTk0Nzk2OGU=",
         "cache-control: no-cache",
